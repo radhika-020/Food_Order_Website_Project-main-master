@@ -510,6 +510,7 @@ header a:hover {
     bottom: 0;
     background: rgba(0, 0, 0, .5);
     pointer-events: none;
+    z-index: 1;
 }
 
 #overlay.active {
