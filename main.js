@@ -23,6 +23,8 @@ const playBtn = videoPlayer.querySelector('.play-button');
 const openModalBtn = document.querySelectorAll('[data-modal-target]');
 const closeModalBtns = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
+const submitBtn = document.querySelector('.submit-')
+const cancelBtn = document.querySelector('.cancel')
 
 // Popular items section
 productContainers.forEach((item, i) => {
@@ -90,6 +92,15 @@ closeModalBtns.forEach(button => {
         closeModal(modal)
     })
 })
+
+// cancelBtn.forEach(button => {
+//     button.addEventListener('click', () => {
+//         const modal = button.closest('.cancel')
+//         closeModal(modal)
+//     })
+// })
+
+
 closeModalBtns.forEach(button => {
     button.addEventListener('click', () => {
         const modal = button.closest('.cart-modal-container')
@@ -113,8 +124,64 @@ function openModal(modal) {
     }
     window.addEventListener("scroll", noscroll)
 
+// var nameInput = document.querySelector(".name-input").value;
+// console.log(nameInput);
 
+// var range = document.querySelector(".range-1").value;
+// console.log(range);
+
+// var range1 = document.querySelector(".range-2").value;
+// console.log(range1);
+
+// var preparation = document.querySelector(".preparation-1").value;
+// console.log(preparation);
+
+// var preparation1 = document.querySelector(".preparation-2").value;
+// console.log(preparation1);
+
+// var recipe = document.querySelector(".recipe").value;
+// console.log(recipe);
+
+// var image = document.querySelector(".image-upload-input").value;
+// console.log();
 }
+
+var arr = []
+submitBtn.addEventListener('click', function(){
+
+    var nameInput = document.querySelector(".name-input").value;
+    console.log(nameInput);
+
+    var range = document.querySelector(".range-1").value;
+    console.log(range);
+
+    var range1 = document.querySelector(".range-2").value;
+    console.log(range1);
+
+    var preparation = document.querySelector(".preparation-1").value;
+    console.log(preparation);
+
+    var preparation1 = document.querySelector(".preparation-2").value;
+    console.log(preparation1);
+
+    var recipe = document.querySelector(".recipe").value;
+    console.log(recipe);
+
+    if(nameInput && range && range1 && preparation && preparation1 && recipe){
+        var obj = {nameInput, range, range1, preparation, preparation1, recipe}
+        arr.push(obj)
+        console.log(arr)
+    }
+    else{
+        alert("Cannot submit the form as one of the field(s) are missing!")
+    }
+})
+// for(let i=0; i<arr.length; i++)
+
+// cancelBtn.addEventListener('click', function(){
+//     console.log("cancel Button!")
+// })
+
 
 
 
@@ -130,3 +197,17 @@ function closeModal(modal) {
     // })
     delete window.scrollTo;
 }
+
+// Request a dish carousel
+productContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+        item.scrollLeft -= containerWidth;
+    })
+})
